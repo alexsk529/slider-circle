@@ -3,13 +3,15 @@ import ButtonGroup from "./ButtonGroup";
 import Swiper from "./Swiper";
 
 const StyledContainer = styled.div`
-    margin-left: 80px;
+    margin: 0 80px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap:56px;
-    @media (${props=>props.theme.media.mobile}) {
-        margin-left: 0;
+    position: relative;
+    @media (${props=>props.theme.media.tablet}) {
+        margin: 0;
+        flex-direction: column-reverse;
     }
 `
 

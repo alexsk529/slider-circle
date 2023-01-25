@@ -1,0 +1,47 @@
+.swiper {
+    height: 100%;
+    width: 100%;
+}
+
+.swiper-slide {
+    width: auto;
+}
+
+.swiper-button-prev {
+    width: 40px;
+    height: 40px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 15px rgba(56, 119, 238, 0.1);
+    border-radius: 50%;
+    position: absolute;
+    left: -10px;
+}
+
+.swiper-button-prev:after {
+    content: "chevron_left";
+    font-family: 'Material Symbols Outlined';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 24px;
+}
+
+.swiper-button-next {
+    width: 40px;
+    height: 40px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 15px rgba(56, 119, 238, 0.1);
+    border-radius: 50%;
+}
+
+.swiper-button-next:after {
+    content: "chevron_right";
+    font-family: 'Material Symbols Outlined';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 24px;
+}
+
+.swiper-button-disabled {
+    display:none;
+}
+  

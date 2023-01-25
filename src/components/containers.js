@@ -6,7 +6,8 @@ export const Container = styled.div`
     margin: 0 0 0 16.6677%;
     border-left: 1px solid rgba(66, 86, 122, 0.1);
     border-right: 1px solid rgba(66, 86, 122, 0.1);
-    padding-top: 170px;
+    padding-top: 15.74vh;
+    padding-bottom: 6vh;
     position: relative;
 
     @media ${props => props.theme.media.tablet} {

@@ -19,14 +19,14 @@ function App() {
     return (
         <DiagramContext.Provider value={{providerData, circle, current, setCurrent, timing, setTiming}}>
             <Container>
-                <Vertical/>
-                <Horizontal/>
                 <ContentContainer>
                     <Title>Исторические <br/> даты</Title>
                     <Diagram></Diagram>
                     <Dates/>
                     <Slider/>
                 </ContentContainer>
+                <Vertical/>
+                <Horizontal/>
             </Container>
         </DiagramContext.Provider>
     );
