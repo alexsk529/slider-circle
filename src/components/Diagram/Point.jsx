@@ -5,19 +5,20 @@ import { DiagramContext } from '../../DiagramContext.js';
 
 export const Point = (props) => {
     const {
-        handleClick, 
         circleRot, 
         active, 
         title, 
-        timing, 
-        id, 
         index, 
-        titleHidden
+        titleHidden,
+        handleClick,
+        timing
     } = props;
-    const data = useContext(DiagramContext)
+
+    const {providerData: data} = useContext(DiagramContext);
     const amount = data.length;
     const angle = 360 / amount;
     const rotation = angle * (index + 1) * Math.PI / 180;
+    const id = data[index].id
     return (
         <StyledPoint
             onClick={handleClick}

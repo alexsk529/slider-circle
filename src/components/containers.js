@@ -19,6 +19,9 @@ export const Container = styled.div`
 
 export const ContentContainer = styled.div`
     height: 74.63%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     @media ${props => props.theme.media.tablet} {
         height: 100vh;
     }

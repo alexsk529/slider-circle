@@ -15,11 +15,7 @@ const StyledCircle = styled.div`
 `
 
 const Circle = () => {
-    const data = useContext(DiagramContext)
-    const amount = data.length;
-    const angle = 360 / amount;
-
-    const circle = React.useRef({});
+    const {providerData: data, circle, current, timing} = useContext(DiagramContext)
     const [circleRot, setCircleRot] = React.useState(0);
     const [titleHidden, setTitleHidden] = React.useState(false)
     React.useEffect(() => {
@@ -42,24 +38,21 @@ const Circle = () => {
         }
     }, [])
 
-    const [current, handleClick, timing] = useRotation(circle);
-
+    const {handleClick} = useRotation(circle);
     return (
         <StyledCircle timing={timing} ref={circle}>
             {data.map((entity, i) => {
                 const active = i === current ? true : false
-                const id = entity.id;
                 return (
                     <Point
-                        key={id}
-                        handleClick={handleClick}
+                        key={entity.id}
                         active = {active}
                         circleRot={circleRot}
                         titleHidden={titleHidden}
                         title={entity.title}
-                        timing={timing}
-                        id={id}
                         index={i}
+                        handleClick={handleClick}
+                        timing={timing}
                     />
                 )
             })}
