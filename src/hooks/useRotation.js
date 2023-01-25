@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { DiagramContext } from '../DiagramContext.js';
 
 export const useRotation = (circle) => {
-    const {providerData: data, current, setCurrent, timing, setTiming} = useContext(DiagramContext)
+    const {providerData: data, current, setCurrent, setTiming} = useContext(DiagramContext)
     const amount = data.length;
     const angle = 360 / amount;
     
@@ -16,8 +16,8 @@ export const useRotation = (circle) => {
     }
     
     const defineDegree = (id) => {
-        const currentElement = Array.from(circle.current.children).find(point => point.dataset.id == current+1);
-        const rotationElement = Array.from(circle.current.children).find(point => point.dataset.id == id);
+        const currentElement = Array.from(circle.current.children).find(point => +point.dataset.id === +(current+1));
+        const rotationElement = Array.from(circle.current.children).find(point => +point.dataset.id === +id);
         setCurrent(id - 1);
         let rotation = rotationElement.dataset.rotation - currentElement.dataset.rotation;
         rotation = redefineRotation(rotation)
@@ -26,7 +26,7 @@ export const useRotation = (circle) => {
     }
 
     const rotate = (degree) => {
-        circle.current.rotate(degree);
+        circle.current.rotate(-degree);
     } 
 
     const handleClick = (e) => {

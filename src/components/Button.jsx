@@ -6,18 +6,22 @@ const StyledButton = styled.button`
     cursor: pointer;
     border-radius: 50%;
     border: 1px solid rgba(66, 86, 122, 0.5);
-    color: #42567A;
+    color: ${props => props.theme.colors.main};
     display: flex;
     justify-content: center;
     align-items: center;
     background: none;
     z-index: 10;
     ${props => props.disabled && `
-        color: #42567A;
+        color: ${props => props.theme.colors.main};
         opacity: 0.5;
         border: 1px solid rgba(66, 86, 122, 0.2);
         cursor: auto;
     `}
+    @media (${props=>props.theme.media.mobile}) {
+        width: 25px;
+        height: 25px;
+    }
 `
 
 const Button = (props) => {

@@ -17,7 +17,8 @@ export const Point = (props) => {
     const {providerData: data} = useContext(DiagramContext);
     const amount = data.length;
     const angle = 360 / amount;
-    const rotation = angle * (index + 1) * Math.PI / 180;
+    let rotation = angle * Math.PI / 180;
+    if (index !== 0) rotation = -angle * (index-1) * Math.PI / 180;
     const id = data[index].id
     return (
         <StyledPoint

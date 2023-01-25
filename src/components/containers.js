@@ -14,16 +14,17 @@ export const Container = styled.div`
         width: 87.5vw;
         margin: 0 auto;
         padding-top: 59px;
+        padding-bottom: 13.33px;
     }
 `
 
 export const ContentContainer = styled.div`
-    height: 74.63%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     @media ${props => props.theme.media.tablet} {
-        height: 100vh;
+        height: 100%;
     }
 `
 
@@ -48,7 +49,7 @@ export const Horizontal = styled.div`
     left: 0;
     border-bottom: 1px solid rgba(66, 86, 122, 0.1);
 
-    @media ${props => props.theme.media.tablet} {
-        display: none
+    @media (${props => props.theme.media.tablet}) {
+        height: 51.58%;
     }
 `

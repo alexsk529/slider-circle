@@ -12,10 +12,14 @@ const StyledCircle = styled.div`
     border-radius: 50%;
     position: relative;
     transition: all ${props => props.timing}s ease;
+
+    @media (${props => props.theme.media.tablet}) {
+        display: none;
+    }
 `
 
 const Circle = () => {
-    const {providerData: data, circle, current, timing} = useContext(DiagramContext)
+    const {providerData: data, circle, current, timing} = useContext(DiagramContext);
     const [circleRot, setCircleRot] = React.useState(0);
     const [titleHidden, setTitleHidden] = React.useState(false)
     React.useEffect(() => {
@@ -30,13 +34,14 @@ const Circle = () => {
     React.useEffect (()=> {
         const transitionEnd = (e) => {
             if (e.propertyName !== 'transform') return
-            if (e.target == circle.current) setTitleHidden(false)
+            if (e.target === circle.current) setTitleHidden(false)
         }
-        circle.current.addEventListener('transitionend', transitionEnd)
+        const circleDiagram = circle.current;
+        circleDiagram.addEventListener('transitionend', transitionEnd)
         return () => {
-            circle.current.removeEventListener('transitionend', transitionEnd)
+            circleDiagram.removeEventListener('transitionend', transitionEnd)
         }
-    }, [])
+    }, [circle])
 
     const {handleClick} = useRotation(circle);
     return (

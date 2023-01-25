@@ -1,14 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
 import Title from './components/Title.jsx';
 import { Container, ContentContainer, Vertical, Horizontal } from './components/containers.js'
 import Diagram from './components/Diagram/Diagram.jsx';
+import Dates from './components/Dates.jsx';
 
 import { DiagramContext } from './DiagramContext';
 import { useData } from './hooks/useData';
 
-import Swiper from './components/Swiper.jsx';
-import SliderContainer from './components/SliderContainer.jsx';
+import Slider from './components/Slider.jsx';
 
 function App() {
     const data = useData();
@@ -25,8 +24,8 @@ function App() {
                 <ContentContainer>
                     <Title>Исторические <br/> даты</Title>
                     <Diagram></Diagram>
-                    <Swiper/>
-                    <SliderContainer/>
+                    <Dates/>
+                    <Slider/>
                 </ContentContainer>
             </Container>
         </DiagramContext.Provider>

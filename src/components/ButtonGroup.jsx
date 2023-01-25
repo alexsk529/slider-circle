@@ -5,24 +5,49 @@ import MaterialIcon from "./MaterialIcon.jsx";
 import { useRotation } from "../hooks/useRotation.js";
 import { DiagramContext } from '../DiagramContext.js';
 
-const StyledGroup = styled.div`
+const FlexColumn = styled.div`
     display: flex;
-    gap: 20px
+    flex-direction: column;
+    gap: 20px;
+    @media (${props => props.theme.media.mobile}) {
+        gap: 10.67px;
+    }
+`
+
+const StyledCurrentId = styled.span`
+    color: ${props => props.theme.colors.main};
+    font-size: 14px;
+    line-height: 1;
+    vertical-align: text-bottom;
+`
+
+const StyledButtonGroup = styled.div`
+    display: flex;
+    gap: 20px;
+    @media (${props => props.theme.media.mobile}) {
+        gap: 8px;
+    }
 `
 
 const ButtonGroup = () => {
-    const { circle } = useContext(DiagramContext)
+    const { circle, current, providerData: data } = useContext(DiagramContext)
     const { rotateBackward, rotateForward } = useRotation(circle);
+    const amount = data.length;
 
     return (
-        <StyledGroup>
-            <Button onClick={rotateBackward}>
-                <MaterialIcon>chevron_left</MaterialIcon>
-            </Button>
-            <Button onClick={rotateForward}>
-                <MaterialIcon>chevron_right</MaterialIcon>
-            </Button>
-        </StyledGroup>
+        <FlexColumn>
+            <StyledCurrentId>
+                {current+1}/{amount}
+            </StyledCurrentId>
+            <StyledButtonGroup>
+                <Button onClick={rotateBackward}>
+                    <MaterialIcon>chevron_left</MaterialIcon>
+                </Button>
+                <Button onClick={rotateForward}>
+                    <MaterialIcon>chevron_right</MaterialIcon>
+                </Button>
+            </StyledButtonGroup>
+        </FlexColumn>
     );
 }
 
