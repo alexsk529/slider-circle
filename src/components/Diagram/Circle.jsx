@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import styled from "styled-components";
 import { DiagramContext } from '../../DiagramContext.js';
+import useTitleAnimation from '../../hooks/useTitleAnimation.js';
+import useCircleRotate from '../../hooks/useCircleRotate.js';
 
 import { Point } from './Point.jsx';
 import { useRotation } from '../../hooks/useRotation.js';
@@ -22,26 +24,10 @@ const Circle = () => {
     const {providerData: data, circle, current, timing} = useContext(DiagramContext);
     const [circleRot, setCircleRot] = React.useState(0);
     const [titleHidden, setTitleHidden] = React.useState(false)
-    React.useEffect(() => {
-        circle.current.rotate = function (deg) {
-            setTitleHidden(true)
-            const rotationAngle = circleRot + deg
-            this.style.transform = "rotate(" + rotationAngle + "deg)";
-            setCircleRot(prev => prev + deg)
-        }
-    }, [circle, circleRot])
+    
+    useCircleRotate({circle, setCircleRot, circleRot, setTitleHidden})
 
-    React.useEffect (()=> {
-        const transitionEnd = (e) => {
-            if (e.propertyName !== 'transform') return
-            if (e.target === circle.current) setTitleHidden(false)
-        }
-        const circleDiagram = circle.current;
-        circleDiagram.addEventListener('transitionend', transitionEnd)
-        return () => {
-            circleDiagram.removeEventListener('transitionend', transitionEnd)
-        }
-    }, [circle])
+    useTitleAnimation(circle, setTitleHidden);
 
     const {handleClick} = useRotation(circle);
     return (

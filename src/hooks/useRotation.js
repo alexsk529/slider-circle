@@ -37,6 +37,11 @@ export const useRotation = (circle) => {
         rotate(degree, id)
     }
 
+    const paginationClick = (id) => {
+        const degree = defineDegree(id);
+        rotate(degree, id)
+    }
+
     const rotateForward = () => {
         const next = (current + 1 >= amount) ? 0 : current + 1;
         const degree = defineDegree(next+1);
@@ -49,5 +54,5 @@ export const useRotation = (circle) => {
         rotate(degree, prev+1);
     }
 
-    return {handleClick, rotateForward, rotateBackward};
+    return {handleClick, rotateForward, rotateBackward, paginationClick};
 }

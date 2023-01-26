@@ -12,6 +12,9 @@ const StyledButton = styled.button`
     align-items: center;
     background: ${props => props.background || 'none'};
     z-index: 10;
+    &:hover {
+        background: #ffffff;
+    }
     ${props => props.shadow && css`
         box-shadow: ${props => props.shadow};
     `}
